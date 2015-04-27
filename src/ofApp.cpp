@@ -94,13 +94,20 @@ void ofApp::draw(){
 void ofApp::keyPressed(int key){
     if(key == OF_KEY_LEFT) { // if left arrow key, fish goes left
         fishLeft = true;
-        fishVel.x = -6;
-        fishPos.x += fishVel.x;
+        fishVel = ofVec2f(-6,ofMap(sin(ofGetElapsedTimef()),-1,1,-5,5));
+//        fishVel.x = -6;
+//        fishVel.y = ofMap(sin(ofGetElapsedTimef()),-1,1,-10,10);
+//        fishPos.x += fishVel.x;
+        fishPos+=fishVel;
+        
     }
     else if(key == OF_KEY_RIGHT) { // if right arrow key, fish goes right and the fish gif switches to the right facing fish
+        fishVel = ofVec2f(6,ofMap(sin(ofGetElapsedTimef()),-1,1,-5,5));
         fishLeft = false;
-        fishVel.x = 6;
-        fishPos.x += fishVel.x;
+//        fishVel.x = 6;
+//        fishPos.x += fishVel.x;
+        fishPos+=fishVel;
+        
     }
     else if(key == OF_KEY_UP) { // if up key, fish goes up
         
